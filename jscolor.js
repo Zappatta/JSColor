@@ -942,10 +942,8 @@ var jscolor = {
 			spnClear.style.margin = "3px"
 			spnClear.style.cursor = "pointer"
 
-			//alert(jscolor.loadImage("clear.png"));
 			spnClear.innerHTML = "<img src='"+ jscolor.getDir() +"clear.png'>";
-			
-			//valueElement.addEventListener("change", function(){alert("adss")})
+						
 			jscolor.addEvent(spnClear, 'click', function(){ 
 				this.fromString("#FFFFFF");
 				valueElement.value = "";				

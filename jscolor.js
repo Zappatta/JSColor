@@ -357,7 +357,8 @@ var jscolor = {
 		this.pickerBorderColor = 'ThreeDHighlight ThreeDShadow ThreeDShadow ThreeDHighlight'; // CSS color
 		this.pickerInset = 1; // px
 		this.pickerInsetColor = 'ThreeDShadow ThreeDHighlight ThreeDHighlight ThreeDShadow'; // CSS color
-		this.pickerZIndex = 10000;
+		this.pickerZIndex = 10000;		
+		this.clearable = false;		
 
 
 		for(var p in prop) {
@@ -934,6 +935,25 @@ var jscolor = {
 				backgroundColor : styleElement.style.backgroundColor,
 				color : styleElement.style.color
 			};
+		}
+
+		if(this.clearable){
+			var spnClear = document.createElement("span");
+			spnClear.style.margin = "3px"
+			spnClear.style.cursor = "pointer"
+
+			//alert(jscolor.loadImage("clear.png"));
+			spnClear.innerHTML = "<img src='"+ jscolor.getDir() +"clear.png'>";
+			
+			//valueElement.addEventListener("change", function(){alert("adss")})
+			jscolor.addEvent(spnClear, 'click', function(){ 
+				this.fromString("#FFFFFF");
+				valueElement.value = "";				
+				jscolor.fireEvent(valueElement,'change')				
+			}.bind(this));
+			
+			valueElement.parentNode.appendChild(spnClear);
+			
 		}
 
 		// require images
